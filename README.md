@@ -41,3 +41,29 @@ variables which foremost define the housing price are the overall quality of the
 where it is located, the year when it was built and remodeled, the number of parking spots and the garage
 type, the size of living and basement area, whether it has fireplaces or not, the quality of the basement and
 the kitchen, and finally the total number of rooms above ground.
+
+Dataset overview 
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20dataset%20overview.png)
+
+Attribute correlation to price
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20correlations%20to%20price.png)
+
+The model 
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20model.png)
+
+Cross validation
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20kfold.png)
+
+Prediction on train set 
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20train%20set%20prediction.png)
+
+Prediction on test set 
+
+![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20test%20set%20prediction.png)
+
+
