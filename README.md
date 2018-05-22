@@ -66,4 +66,6 @@ Prediction on test set
 
 ![alt text](https://github.com/evagian/Ames-Iowa-Housing-predict-property-prices-R-/blob/master/data/iowa%20test%20set%20prediction.png)
 
+Running the code
 
+You should run the R code from all steps with the given order (from step 1 to step n)
