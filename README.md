@@ -68,4 +68,5 @@ Prediction on test set
 
 Running the code
 
-You should run the R code from all steps with the given order (from step 1 to step n)
+  - The Iowa housing dataset should be placed into the /data/ directory
+  - You should then run the R code for all steps with the given order (from step 1 to step 6)
