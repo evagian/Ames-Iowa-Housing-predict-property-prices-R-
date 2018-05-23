@@ -5,7 +5,7 @@
 Mtotal <- read.csv("data/data-without-outliers.csv", dec=",", stringsAsFactors=FALSE)
 Mtotal <- subset(Mtotal, select=-c(X,X.1))
 
-## 75% of the sample size
+## 90% of the sample size
 smp_size <- floor(0.90 * nrow(Mtotal))
 
 ## set the seed to make your partition reproducible
