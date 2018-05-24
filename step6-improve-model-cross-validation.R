@@ -13,12 +13,9 @@ train <- Mtotal[train_ind, ]
 test <- Mtotal[-train_ind, ]
 
 # Stepwise regression
-m<- lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
-step(m, direction='both')
-step(m, direction='back')
-m<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
-mnull<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
-m<-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
+mfull<- lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
+mnull<-lm(log(SalePrice)~+I(Gr.Liv.Area^2),data=train)
+m<-step(mnull, scope=list(lower=mnull,upper=mfull), direction='both' )
 summary(m)
 anova(m)
 plot(m)

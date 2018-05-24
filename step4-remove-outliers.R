@@ -2,17 +2,16 @@
 #8 -	Train regression model
 #################################
 Mtotal <- read.csv("data/lasso-selected-attributes.csv", dec=",", stringsAsFactors=FALSE)
+Mtotal <- subset(Mtotal, select=-c(X))
 
 # Stepwise regression
-m<- lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=Mtotal)
-step(m, direction='both')
-step(m, direction='back')
-m<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=Mtotal)
-mnull<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=Mtotal)
-m<-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
+mfull<- lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=Mtotal)
+mnull<-lm(log(SalePrice)~+I(Gr.Liv.Area^2),data=Mtotal)
+m<-step(mnull, scope=list(lower=mnull,upper=mfull), direction='both' )
 summary(m)
 anova(m)
 plot(m)
+
 
 #################################
 #9 -	Evaluate outliers
