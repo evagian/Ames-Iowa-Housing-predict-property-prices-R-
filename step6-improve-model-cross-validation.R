@@ -2,7 +2,7 @@
 Mtotal <- read.csv("data/data-without-outliers.csv", dec=",", stringsAsFactors=FALSE)
 Mtotal <- subset(Mtotal, select=-c(X,X.1))
 
-## 90% of the sample size
+## 75% of the sample size
 smp_size <- floor(0.90 * nrow(Mtotal))
 
 ## set the seed to make your partition reproducible
@@ -18,7 +18,7 @@ step(m, direction='both')
 step(m, direction='back')
 m<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
 mnull<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
+m<-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
 summary(m)
 anova(m)
 plot(m)
@@ -54,7 +54,7 @@ require(boot)
 
 glm.fit=glm(log(SalePrice)~.+I(Gr.Liv.Area^5), data=train )
 
-#LOOCV: Leave-one-out cross validation 
+#LOOCV
 cv.glm(train,glm.fit)$delta 
 fit <- glm.fit
 loocv=function(fit){
@@ -96,13 +96,13 @@ lines(degree,cv.error10,type="b",col="red")
 #15 -	Test model
 #################################
 
-#10 fold cross validatiton use dataset as both training and test set
+#10 fold cross validatiton use dataset 22 as both training and test set
 library(faraway)
 library(DAAG)
 model3.daag<- CVlm(train, m=10,form.lm=formula(log(SalePrice)~.+I(Gr.Liv.Area^5), data=train))
 summary(model3.daag)
 
-#10 fold cross validatiton use dataset 22 training set and test dataset as test set
+#10 fold cross validatiton use dataset 22 as training set and test dataset as test set
 #predict the outcome of the testing data
 predicted <- predict(glm.fit, newdata=test[ ,-1])
 
