@@ -5,7 +5,7 @@
 Mtotal <- read.csv("data/data-without-outliers.csv", dec=",", stringsAsFactors=FALSE)
 Mtotal <- subset(Mtotal, select=-c(X,X.1))
 
-## 90% of the sample size
+## 75% of the sample size
 smp_size <- floor(0.90 * nrow(Mtotal))
 
 ## set the seed to make your partition reproducible
@@ -21,7 +21,7 @@ step(m, direction='both')
 step(m, direction='back')
 m<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
 mnull<-lm(log(SalePrice)~.+I(Gr.Liv.Area^2),data=train)
-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
+m<-step(mnull, scope=list(lower=mnull,upper=m), direction='both' )
 summary(m)
 anova(m)
 plot(m)
@@ -32,8 +32,6 @@ plot(m)
 names(train[,-1])
 y_pred_train = predict(m,train[,-1])
 y_pred_test = predict(m,test[,-1])
-
-
 
 y_train = log(train$SalePrice)
 y_test = log(test$SalePrice)
